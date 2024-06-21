@@ -2,7 +2,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Christianzgaming/chanz1roblox/main/UI%20SCRIPT/DarkDexCloneRef.lua", true))()
 
 -- Dex Bypasses
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/Bypasses.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Christianzgaming/chanz1roblox/main/UI%20SCRIPT/DarkDexBypasses.lua", true))()
 
 -- Dex with CloneRef Support (made as global)
 getgenv().Bypassed_Dex = game:GetObjects("rbxassetid://9352453730")[1]
