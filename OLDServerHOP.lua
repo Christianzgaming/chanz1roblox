@@ -10,7 +10,7 @@ local body = HttpService:JSONDecode(req.Body)
             end
         end
 
-        if #servers > 0 then
+        if #servers > 5 then
             TeleportService:TeleportToPlaceInstance(PlaceId, servers[math.random(1, #servers)], Players.LocalPlayer)
         else
             return notify("Serverhop", "Couldn't find a server.")
