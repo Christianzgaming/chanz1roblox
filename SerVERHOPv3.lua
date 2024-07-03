@@ -10,13 +10,12 @@ if not File then
     table.insert(AllIDs, actualHour)
     writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
 end
-
 function TPReturner()
     local Site;
     if foundAnything == "" then
-        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true'))
     else
-        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&excludeFullGames=true&cursor=' .. foundAnything))
     end
     local ID = ""
     if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
@@ -26,7 +25,7 @@ function TPReturner()
     for i,v in pairs(Site.data) do
         local Possible = true
         ID = tostring(v.id)
-        if tonumber(v.playing) >= 1 and tonumber(v.playing) <= 20 then
+        if tonumber(v.playing) <= 5 / 20 then
             for _,Existing in pairs(AllIDs) do
                 if num ~= 0 then
                     if ID == tostring(Existing) then
@@ -52,7 +51,6 @@ function TPReturner()
                     game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
                 end)
                 wait(4)
-                return
             end
         end
     end
@@ -69,4 +67,5 @@ function TeleportSmall()
     end
 end
 
+-- If you'd like to use a script before server hopping (Like a Automatic Chest collector you can put the Teleport() after it collected everything.
 TeleportSmall()
