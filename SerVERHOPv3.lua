@@ -12,67 +12,48 @@ if not File then
 end
 
 function TPReturner()
-    local function checkServer(maxPlayers)
-        local Site;
-        if foundAnything == "" then
-            Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-        else
-            Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-        end
-        local ID = ""
-        if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-            foundAnything = Site.nextPageCursor
-        end
-        local num = 0;
-        for i,v in pairs(Site.data) do
-            local Possible = true
-            ID = tostring(v.id)
-            if tonumber(v.playing) <= maxPlayers then
-                for _,Existing in pairs(AllIDs) do
-                    if num ~= 0 then
-                        if ID == tostring(Existing) then
-                            Possible = false
-                        end
-                    else
-                        if tonumber(actualHour) ~= tonumber(Existing) then
-                            local delFile = pcall(function()
-                                delfile("NotSameServers.json")
-                                AllIDs = {}
-                                table.insert(AllIDs, actualHour)
-                            end)
-                        end
+    local Site;
+    if foundAnything == "" then
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+    else
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+    local ID = ""
+    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+        foundAnything = Site.nextPageCursor
+    end
+    local num = 0;
+    for i,v in pairs(Site.data) do
+        local Possible = true
+        ID = tostring(v.id)
+        if tonumber(v.playing) >= 1 and tonumber(v.playing) <= 20 then
+            for _,Existing in pairs(AllIDs) do
+                if num ~= 0 then
+                    if ID == tostring(Existing) then
+                        Possible = false
                     end
-                    num = num + 1
+                else
+                    if tonumber(actualHour) ~= tonumber(Existing) then
+                        local delFile = pcall(function()
+                            delfile("NotSameServers.json")
+                            AllIDs = {}
+                            table.insert(AllIDs, actualHour)
+                        end)
+                    end
                 end
-                if Possible == true then
-                    table.insert(AllIDs, ID)
-                    wait()
-                    pcall(function()
-                        writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-                        wait()
-                        game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-                    end)
-                    wait(4)
-                    return true
-                end
+                num = num + 1
             end
-        end
-        return false
-    end
-
-    for i = 5, 1, -1 do
-        if checkServer(i) then
-            return
-        end
-    end
-
-    if checkServer(10) then
-        return
-    end
-
-    for i = 9, 6, -1 do
-        if checkServer(i) then
-            return
+            if Possible == true then
+                table.insert(AllIDs, ID)
+                wait()
+                pcall(function()
+                    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                    wait()
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                end)
+                wait(4)
+                return
+            end
         end
     end
 end
