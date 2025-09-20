@@ -158,4 +158,4 @@ function promptRet.create(title, description, primary, secondary, callback)
 end
 
 return promptRet
-Ad Block is ON
+
