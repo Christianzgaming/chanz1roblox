@@ -117,7 +117,7 @@ local useStudio = RunService:IsStudio() or false
 local settingsCreated = false
 local settingsInitialized = false -- Whether the UI elements in the settings page have been set to the proper values
 local cachedSettings
-local prompt = useStudio and require(script.Parent.prompt) or loadWithTimeout('https://raw.githubusercontent.com/SiriusSoftwareLtd/Sirius/refs/heads/request/prompt.lua')
+local prompt = useStudio and require(script.Parent.prompt) or loadWithTimeout('https://raw.githubusercontent.com/Christianzgaming/chanz1roblox/refs/heads/main/99NIGHTS/prompt.lua')
 local requestFunc = (syn and syn.request) or (fluxus and fluxus.request) or (http and http.request) or http_request or request
 
 -- Validate prompt loaded correctly
@@ -742,7 +742,7 @@ Rayfield.DisplayOrder = 100
 LoadingFrame.Version.Text = Release
 
 -- Thanks to Latte Softworks for the Lucide integration for Roblox
-local Icons = useStudio and require(script.Parent.icons) or loadWithTimeout('https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/refs/heads/main/icons.lua')
+local Icons = useStudio and require(script.Parent.icons) or loadWithTimeout('https://raw.githubusercontent.com/Christianzgaming/chanz1roblox/refs/heads/main/99NIGHTS/icons.lua')
 -- Variables
 
 local CFileName = nil
@@ -3981,7 +3981,7 @@ if CEnabled and Main:FindFirstChild('Notice') then
 end
 -- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA why :(
 --if not useStudio then
---	task.spawn(loadWithTimeout, "https://raw.githubusercontent.com/SiriusSoftwareLtd/Sirius/refs/heads/request/boost.lua")
+--	task.spawn(loadWithTimeout, "https://raw.githubusercontent.com/Christianzgaming/chanz1roblox/refs/heads/main/99NIGHTS/boost.lua")
 --end
 
 task.delay(4, function()
@@ -3997,4 +3997,3 @@ end)
 
 return RayfieldLibrary
 
-Ad Block is ON
