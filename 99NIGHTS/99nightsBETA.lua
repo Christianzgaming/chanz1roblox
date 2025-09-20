@@ -1,7 +1,7 @@
 --// 99 Nights in the Forest Script with Rayfield GUI //--
 
 -- Load Rayfield UI Library
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/Christianzgaming/chanz1roblox/refs/heads/main/99NIGHTS/source.lua'))()
 
 -- Services
 local Players = game:GetService("Players")
