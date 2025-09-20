@@ -17,9 +17,9 @@ local VirtualInputManager = game:GetService("VirtualInputManager") -- Moved here
 -- Configuration
 -- Centralized configuration for easy modification
 local Config = {
-    ScriptName = "99 Nights",
-    ScriptLoadingTitle = "99 Nights Script",
-    ScriptLoadingSubtitle = "by Raygull",
+    ScriptName = "99 Nights Chan",
+    ScriptLoadingTitle = "99 Nights Script Chan",
+    ScriptLoadingSubtitle = "by Chan",
     ConfigFolderName = "99NightsConfigs", -- Dedicated folder for configurations
     ConfigFileName = "99NightsSettings",
     EnableDiscordIntegration = false, -- Toggle for Discord features
