@@ -135,4 +135,3 @@ if userInputService.TouchEnabled then
 		end)
 	end
 end
-Ad Block is ON
