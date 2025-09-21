@@ -181,7 +181,7 @@ task.spawn(function()
     end)
 end)
 
-local commit = shared.CustomCommit and tostring(shared.CustomCommit) or shared.StagingMode and "staging" or "9535f4c3e654ad69f0fe4161751d03c1ff388621"
+local commit = shared.CustomCommit and tostring(shared.CustomCommit) or shared.StagingMode and "staging" or "3eeff195429ccede0673d5dbdd39becb7bd3c67f"
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/"..tostring(commit).."/newnightsintheforest.lua", true))()
-Ad Block is ON
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Christianzgaming/chanz1roblox/"..tostring(commit).."/99NIGHTS/voidware/newnightsintheforestmain.lua", true))()
+
